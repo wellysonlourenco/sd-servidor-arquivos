@@ -1,41 +1,42 @@
-# TRABALHO 1 – SISTEMAS DISTRIBUÍDOS TSI 3713
+# TRABALHO 2 – SISTEMAS DISTRIBUÍDOS TSI 3713
 <p><img src="https://i.ibb.co/3sNMDtV/Instituto-Federal-de-Mato-Grosso-do-Sul.png"  title="IFMS" width="160px"></img></p>
 
-SISTEMA DE PEDIDOS EM UM RESTAURANTE PROBLEMA</br>
-Você é encarregado(a) de desenvolver um sistema de pedidos para um 
-restaurante movimentado que deseja melhorar sua eficiência no atendimento aos 
-inúmeros clientes. Seu sistema deverá ser baseado no conceito de produtor consumidor para gerenciar os pedidos feitos pelos clientes e sua preparação pela 
-equipe da cozinha.
-REQUISITOS FUNCIONAIS
-1. Pedidos de Clientes: Os clientes podem fazer pedidos de diferentes itens do 
-cardápio (pelo menos 10 itens disponíveis para escolha, a qual pode ser aleatória). 
-Os pedidos devem conter, pelo menos, os atributos:
-a) nome;
-b) tempo de preparo (valor aleatório de 100 a 4000 milissegundos)
-c) categoria: [entrada, prato principal, sobremesa].
-Cada cliente fará 3 pedidos, uma entrada, um prato principal e uma sobremesa.
-Um cliente só pode realizar um pedido por vez.
-2. Fila de Pedidos: Os pedidos dos clientes são colocados em uma fila de pedidos 
-pendentes, onde serão aguardados para serem processados.
-3. Preparação na Cozinha: A equipe da cozinha atua como o consumidor, retirando 
-os pedidos da fila e preparando os itens solicitados.
-4. Notificações aos Clientes: Os clientes devem ser notificados quando seus pedidos 
-estiverem prontos para serem servidos. Semelhante ao tempo para produção, o 
-cliente leva um tempo aleatório para consumir o pedido, o qual não deve ser inferior a
-100 nem superior a 5000 milissegundos.
-5. Número de clientes: Seu programa deve gerar um número aleatório, variando de 
-20 a 50, cada cliente deve ser representado por uma thread.
-6. Número de cozinheiros: Seu programa deve gerar um número aleatório, variando 
-de 5 a 10, cada cozinheiro deve ser representado por uma thread.
-REQUISITOS TÉCNICOS
-1. Utilize o conceito de produtor-consumidor para gerenciar a fila de pedidos entre os 
-clientes e a equipe da cozinha.
-2. Implemente sincronização adequada para garantir que os pedidos sejam 
-manipulados de forma segura por várias threads.
-3. Crie um mecanismo de notificação para informar os clientes quando seus pedidos 
-estiverem prontos.
-4. O sistema deve ser capaz de lidar com múltiplos pedidos e vários cozinheiros 
-trabalhando simultaneamente
+SERVIDOR DE ARQUIVOS - File Server</br>
+Você deverá implementar um programa de servidor de rede. O programa é um 
+servidor de arquivos simples que disponibiliza uma coleção de arquivos para 
+transmissão aos clientes. Quando o servidor é inicializado, ele precisa saber o nome do 
+diretório que contém a coleção de arquivos. Essa informação pode ser fornecida como 
+um argumento de linha de comando. Você pode assumir que o diretório não contém 
+subdiretórios e pode assumir que todos os arquivos são arquivos de texto.
+Quando um cliente se conecta ao servidor, o servidor primeiro lê um comando 
+do cliente. Os comandos que o servidor deve conhecer e responder são:
+- INDEX: o servidor responde enviando uma lista de nomes de todos os 
+arquivos que estão disponíveis no servidor. 
+- GET <nome do arquivo>: onde <nome do arquivo> é um nome de arquivo. O servidor verifica se o arquivo solicitado realmente existe. Em caso afirmativo, ele 
+primeiro envia a palavra "OK" como uma mensagem para o cliente. Em seguida, ele 
+envia o conteúdo do arquivo e fecha a conexão. Caso contrário, ele envia uma linha 
+começando com a palavra "ERROR" para o cliente e fecha a conexão.
+
+Seu programa deve usar uma sub-rotina (thread) para lidar com cada 
+solicitação que o servidor recebe. Ele não deve parar após o tratamento de uma 
+solicitação; ele deve permanecer aberto e continuar a aceitar novas solicitações.
+Você também deverá implementar um programa cliente para esse servidor. 
+Projete uma interface de usuário que permita ao usuário fazer pelo menos duas coisas: 
+- 1 Obter uma lista de arquivos que estão disponíveis no servidor e exibir a lista 
+na saída padrão;
+- 2 Obter uma cópia de um arquivo especificado do servidor e salve-o em um 
+arquivo local (no computador em que o cliente está sendo executado).
+Não é necessária interface gráfica, contudo, caso tenha, contará como bônus.
+O critério de avaliação será o seguinte:
+- 1 pontos para a inicialização do servidor identificando corretamente o 
+diretório;
+- 2 pontos para a conexão do cliente com o servidor, reconhecimento dos 
+comandos INDEX e GET e envio de mensagens de erro quando o protocolo não for 
+seguido;
+- 2 pontos para exibição no cliente da lista de arquivos no servidor após 
+comando INDEX;
+- 5 pontos para a transferência de arquivos entre servidor e cliente após 
+comando GET <nome do arquivo>.
 
 
 
